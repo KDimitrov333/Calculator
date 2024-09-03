@@ -31,8 +31,6 @@ function operate(operator, a, b) {
     }
 }
 
-console.log(divide(10, 2));
-
 let num1;
 let num2;
 let operator;
