@@ -34,3 +34,20 @@ function operate(operator, a, b) {
 let num1;
 let num2;
 let operator;
+let displayVal = "";
+
+const display = document.querySelector("#display");
+const numButtons = Array.from(document.querySelectorAll(".num-button"));
+numButtons.forEach(item => {
+    item.addEventListener("click", () => {
+        display.textContent += item.textContent;
+        displayVal = display.textContent;
+    })
+});
+const opButtons = Array.from(document.querySelectorAll(".operator-button"));
+opButtons.forEach(item => {
+    item.addEventListener("click", () => {
+        display.textContent += " " + item.textContent + " ";
+        displayVal = display.textContent;
+    })
+});
