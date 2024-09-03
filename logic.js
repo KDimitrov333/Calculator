@@ -85,7 +85,12 @@ function calc() {
         operator = operators.find(item => item == "*" || item == "/");
         num1 = nums[prioIndex];
         num2 = nums[prioIndex + 1];
-        console.log(operator);
+        if (operator == "/" && num2 == 0) {
+            alert("You can't do that, c'mon");
+            display.textContent = "";
+            displayVal = display.textContent;
+            return;
+        }
         nums.splice(prioIndex, 2, operate(operator, num1, num2));
         operators.splice(prioIndex, 1);
     }
@@ -98,7 +103,7 @@ function calc() {
         operators.shift();
     }
 
-    display.textContent = nums[0];
+    display.textContent = Math.round(nums[0] * 100) / 100;
     displayVal = display.textContent;
 }
 
