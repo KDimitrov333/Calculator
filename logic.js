@@ -27,39 +27,6 @@ function operate(operator, a, b) {
     }
 }
 
-let num1;
-let num2;
-let operator;
-let displayVal = "";
-
-const display = document.querySelector("#display");
-
-const numButtons = Array.from(document.querySelectorAll(".num-button"));
-numButtons.forEach(item => {
-    item.addEventListener("click", () => {
-        display.textContent += item.textContent;
-        displayVal = display.textContent;
-    })
-});
-
-const opButtons = Array.from(document.querySelectorAll(".operator-button"));
-opButtons.forEach(item => {
-    item.addEventListener("click", () => {
-        if (display.textContent == "") {
-            alert("You cannot begin with an operator");
-        }
-        else {
-            if (display.textContent.slice(-1) == " ") {
-                alert("You cannot enter an operator after an operator");
-            }
-            else {
-                display.textContent += " " + item.textContent + " ";
-                displayVal = display.textContent;
-            }
-        }
-    })
-});
-
 function calc() {
     if (displayVal.slice(-1) == " ") {
         displayVal = displayVal.slice(0, -3);
@@ -107,6 +74,41 @@ function calc() {
     displayVal = display.textContent;
 }
 
+let num1;
+let num2;
+let operator;
+let displayVal = "";
+let okToPoint = true;
+
+const display = document.querySelector("#display");
+
+const numButtons = Array.from(document.querySelectorAll(".num-button"));
+numButtons.forEach(item => {
+    item.addEventListener("click", () => {
+        display.textContent += item.textContent;
+        displayVal = display.textContent;
+    })
+});
+
+const opButtons = Array.from(document.querySelectorAll(".operator-button"));
+opButtons.forEach(item => {
+    item.addEventListener("click", () => {
+        if (display.textContent == "") {
+            alert("You cannot begin with an operator");
+        }
+        else {
+            if (display.textContent.slice(-1) == " ") {
+                alert("You cannot enter an operator after an operator");
+            }
+            else {
+                display.textContent += " " + item.textContent + " ";
+                displayVal = display.textContent;
+                okToPoint = true;
+            }
+        }
+    })
+});
+
 const equalsBtn = document.querySelector("#equals");
 equalsBtn.addEventListener("click", calc);
 
@@ -114,4 +116,13 @@ const clearBtn = document.querySelector("#clear");
 clearBtn.addEventListener("click", () => {
     display.textContent = "";
     displayVal = display.textContent;
+})
+
+const pointBtn = document.querySelector("#point");
+pointBtn.addEventListener("click", () => {
+    if (okToPoint && (display.textContent != "" || display.textContent.slice(-1) == " ")) {
+        display.textContent += ".";
+        displayVal = display.textContent;
+        okToPoint = false;
+    }
 })
