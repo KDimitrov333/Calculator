@@ -116,7 +116,7 @@ const clearBtn = document.querySelector("#clear");
 clearBtn.addEventListener("click", () => {
     display.textContent = "";
     displayVal = display.textContent;
-})
+});
 
 const pointBtn = document.querySelector("#point");
 pointBtn.addEventListener("click", () => {
@@ -125,7 +125,7 @@ pointBtn.addEventListener("click", () => {
         displayVal = display.textContent;
         okToPoint = false;
     }
-})
+});
 
 const backspaceBtn = document.querySelector("#backspace");
 backspaceBtn.addEventListener("click", () => {
@@ -138,4 +138,4 @@ backspaceBtn.addEventListener("click", () => {
         }
         displayVal = display.textContent;
     }
-})
+});
