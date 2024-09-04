@@ -126,3 +126,16 @@ pointBtn.addEventListener("click", () => {
         okToPoint = false;
     }
 })
+
+const backspaceBtn = document.querySelector("#backspace");
+backspaceBtn.addEventListener("click", () => {
+    if (display.textContent != "") {
+        if (display.textContent.slice(-1) == " ") {
+            display.textContent = display.textContent.slice(0, -3);
+        }
+        else {
+            display.textContent = display.textContent.slice(0, -1);
+        }
+        displayVal = display.textContent;
+    }
+})
